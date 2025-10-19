@@ -12,7 +12,7 @@ python -m venv venv
 .\venv\Scripts\Activate.ps1
 
 # On macOS/Linux:
-# source venv/bin/activate
+source venv/bin/activate
 
 # Install the required Python packages
 pip install -r requirements.txt
@@ -22,7 +22,7 @@ cd frontend
 # Install the necessary npm packages
 npm install
 4. Launch the Weaviate DatabaseMake sure Docker Desktop is running. Then, from the root directory of the project, run:docker compose up -d
-This command will pull the Weaviate image and start the container in the background.5. Load Data into WeaviateThis is a crucial one-time step to populate your database.Make sure your Python virtual environment (venv) from the backend setup is still active.Launch Jupyter Notebook from the root directory: jupyter notebookIn the browser window that opens, navigate to notebooks/ and run all the cells in model_training.ipynb.Once it's finished, you can shut down the Jupyter server (Ctrl + C in the terminal).6. Run the Application!You're all set! Now, open two separate terminals.Terminal 1 (Backend):# Navigate to the backend directory and activate your venv
+5. Load Data into WeaviateThis is a crucial one-time step to populate your database.Make sure your Python virtual environment (venv) from the backend setup is still active.Launch Jupyter Notebook from the root directory: jupyter notebookIn the browser window that opens, navigate to notebooks/ and run all the cells in model_training.ipynb.Once it's finished, you can shut down the Jupyter server (Ctrl + C in the terminal).6. Run the Application!You're all set! Now, open two separate terminals.Terminal 1 (Backend):# Navigate to the backend directory and activate your venv
 cd backend
 .\venv\Scripts\Activate.ps1
 
@@ -33,7 +33,7 @@ cd frontend
 
 # Start the React development server
 npm start
-Your application should now be running! Open your browser and go to http://localhost:3000.🧠 How It Works: The RAG ArchitectureThe application uses a Retrieval-Augmented Generation (RAG) pipeline to provide intelligent recommendations.User Query: A user enters a natural language query (e.g., "a modern wooden coffee table").Vectorization: The query is converted into a numerical vector (an embedding) using a SentenceTransformer model.Retrieval: This vector is used to perform a similarity search in the Weaviate database, which finds the most relevant product vectors from the catalog.Augmentation: The data from these retrieved products (title, description, etc.) is formatted and "augmented" (added) into a carefully engineered prompt.Generation: This augmented prompt, now rich with context, is sent to the powerful Gemma LLM via the OpenRouter API.Response: The LLM generates a creative, human-like summary based on the provided context, which is then displayed to the user.📁 Project StructureHere's an overview of the project's file structure:.
+Your application should now be running! Open your browser and go to http://localhost:3000.🧠 How It Works: The RAG ArchitectureThe application uses a Retrieval-Augmented Generation (RAG) pipeline to provide intelligent recommendations.User Query: A user enters a natural language query (e.g., "a modern wooden coffee table").Vectorization: The query is converted into a numerical vector (an embedding) using a SentenceTransformer model.Retrieval: This vector is used to perform a similarity search in the Weaviate database, which finds the most relevant product vectors from the catalog.Augmentation: The data from these retrieved products (title, description, etc.) is formatted and "augmented" (added) into a carefully engineered prompt.Generation: This augmented prompt, now rich with context, is sent to the powerful Gemma LLM via the OpenRouter API.Response: The LLM generates a creative, human-like summary based on the provided context, which is then displayed to the user.📁 Project Structure.
 ├── .gitignore          # Tells Git which files to ignore
 ├── backend/
 │   ├── data/
